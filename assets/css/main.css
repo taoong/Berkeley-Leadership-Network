@@ -1718,7 +1718,7 @@
 		}
 
 	section, article {
-		margin-bottom: 3em;
+		
 	}
 
 		section > :last-child,
@@ -1806,7 +1806,7 @@
 		input[type="reset"]:hover,
 		button:hover,
 		.button:hover {
-			background-color: #d95673;
+			background-color: #003262;
 		}
 
 		input[type="button"]:active,
@@ -1814,7 +1814,7 @@
 		input[type="reset"]:active,
 		button:active,
 		.button:active {
-			background-color: #b93653;
+			background-color: #003262;
 		}
 
 		input[type="button"].alt,
