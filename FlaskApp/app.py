@@ -35,8 +35,6 @@ from IPython.display import display, Latex, Markdown, HTML, Javascript
 # In[90]:
 
 rawvcData = pd.read_csv('blnData.csv')
-print('Bingu')
-print(len(rawvcData))
 rawvcData.head()
 
 # In[ ]:
@@ -161,5 +159,5 @@ def dataRequest():
 
 
 if __name__ == "__main__":
-    app.run(port=6920)
+    app.run(port=6949)
 
