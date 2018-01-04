@@ -20,7 +20,15 @@
 				<div class="inner">
 					<section class="box search">
 						<form method="post" action="#">
-							<input type="text" ng-model='searchText' class="text" name="search" placeholder="Search" />
+							<input type="text" ng-model='searchLocation' class="text" name="search" placeholder="Search for a location... (Eg. San Francisco)" />
+						</form>
+						<br>
+						<form method="post" action="#">
+							<input type="text" ng-model='searchIndustry' class="text" name="search" placeholder="Search for an industry... (Eg. Internet)" />
+						</form>
+						<br>
+						<form method="post" action="#">
+							<input type="text" ng-model='searchJob' class="text" name="search" placeholder="Search for a job title... (Eg. Investor)" />
 						</form>
 					</section>
 					<!-- Post -->
@@ -30,7 +38,7 @@
 							<tr>
 								<td ng-repeat="(key, value) in data[0]"> {{ key }} </td>
 							</tr>
-							<tr ng-repeat="person in data | filter:searchText">
+							<tr ng-repeat="person in data | filter:search(searchLocation, searchIndustry, searchJob)">
 								<th ng-repeat="(key, value) in person"> {{ value }} </th>
 							</tr>
 							{% endraw %}

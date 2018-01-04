@@ -19,7 +19,23 @@
                 cleanedData[i][key] = responseData[key][i].replace(/\b\w/g, l => l.toUpperCase());
             }
         }
+        console.log(cleanedData);
         return cleanedData;
+    };
+
+    $scope.search = function(searchLocation, searchIndustry, searchJob) {
+        return function (item) {
+            if (searchLocation && !(item['Location'].includes(searchLocation))) {
+                return false;
+            }
+            if (searchIndustry && !(item['Investment interest/sector'].includes(searchIndustry))) {
+                return false;
+            }
+            if (searchJob && !(item['Primary Job Title'].includes(searchJob))) {
+                return false;
+            }
+            return true;
+        }
     };
 
     $http.post('/dataRequest').
