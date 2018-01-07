@@ -9,42 +9,16 @@
 		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-		<!-- <script src="static/script.js"></script> -->
+		
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-		<script src="{{ url_for('static', filename='main.js') }}"></script>
+		<script src="static/main.js"></script>
+		<!-- <script src="{{ url_for('static', filename='main.js') }}"></script> -->
 	</head>
 	<body ng-controller="webAppController">
 
 		<!-- Content -->
-
-
-
-
-
-		<div id="content" style="margin-left:11em;">
+			<div id="content" style="margin-left:11em;">
 				<div class="inner">
-					<section class="box search">
-						<form method="post" action="#">
-							<input type="text" ng-model='searchText' class="text" name="search" placeholder="Search" />
-						</form>
-					</section>
-					<!-- Post -->
-					<article class="box post post-excerpt" id="info" ng-if="data.length > 0">
-						<table class="table table-advance table-striped table-bordered" style="margin-top: 10px;">
-							{% raw %}
-							<tr>
-								<td ng-repeat="(key, value) in data[0]"> {{ key }} </td>
-							</tr>
-							<tr ng-repeat="person in data | filter:searchText">
-								<th ng-repeat="(key, value) in person"> {{ value }} </th>
-							</tr>
-							{% endraw %}
-						</table>
-					</article>
-
-<!-- Lines 46-74 is the old version, that includes 3 filters. I took them out. -Kevin Le		
- -->			<!-- <div id="content" style="margin-left:11em;">
-				<div class="inner">	
 					<section class="box search">
 						<form method="post" action="#">
 							<input type="text" ng-model='searchLocation' class="text" name="search" placeholder="Search for a location... (Eg. San Francisco)" />
@@ -57,21 +31,27 @@
 						<form method="post" action="#">
 							<input type="text" ng-model='searchJob' class="text" name="search" placeholder="Search for a job title... (Eg. Investor)" />
 						</form>
+						<br>
+						<form method="post" action="#">
+							<input type="text" ng-model='searchStage' class="text" name="search" placeholder="Search for an investment stage... (Eg. Series A)" />
+						</form>
+
+
 					</section>
 					<!-- Post -->
-					<!-- <article class="box post post-excerpt" id="info" ng-if="data.length > 0">
+					<article class="box post post-excerpt" id="info" ng-if="data.length > 0">
 						<table class="table table-advance table-striped table-bordered" style="margin-top: 10px;">
 							{% raw %}
 							<tr>
 								<td ng-repeat="(key, value) in data[0]"> {{ key }} </td>
 							</tr>
-							<tr ng-repeat="person in data | filter:search(searchLocation, searchIndustry, searchJob)">
+							<tr ng-repeat="person in data | filter:search(searchLocation, searchIndustry, searchJob, searchStage)">
 								<th ng-repeat="(key, value) in person"> {{ value }} </th>
 							</tr>
 							{% endraw %}
 						</table>
 					</article>
- --> 
+
 					<!-- Pagination -->
 
 
