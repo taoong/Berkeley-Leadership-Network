@@ -23,7 +23,7 @@
         return cleanedData;
     };
 
-    $scope.search = function(searchLocation, searchIndustry, searchJob) {
+    $scope.search = function(searchLocation, searchIndustry, searchJob, searchStage) {
         return function (item) {
             if (searchLocation && !(item['Location'].includes(searchLocation))) {
                 return false;
@@ -34,6 +34,10 @@
             if (searchJob && !(item['Primary Job Title'].includes(searchJob))) {
                 return false;
             }
+            if (searchStage && !(item['Stage (Pre-Seed, Seed, Series A/B/C)'].includes(searchStage))) {
+                return false;
+            }
+
             return true;
         }
     };
