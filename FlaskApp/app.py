@@ -17,13 +17,14 @@ def companies():
 
 @app.route("/profile/<name>")
 def profile(name):
-    person = filteredVCdata[filteredVCdata['Full Name'].str.contains(name.lower())]
+    person = filteredVCdata[filteredVCdata['Full Name'].str.startswith(name.lower())]
     print(person)
-    return render_template('linked_profile.html', name=person['Full Name'][0].title(),
-                           job=person['Primary Job Title'][0].title(),
-                           company=person['Primary Company'][0].title(),
-                           location=person['Location'][0].title(),
-                           sector=person['Investment interest/sector'][0].title())
+    return render_template('linked_profile.html', name=person['Full Name'].iloc[0].title(),
+                           job=person['Primary Job Title'].iloc[0].title(),
+                           company=person['Primary Company'].iloc[0].title(),
+                           location=person['Location'].iloc[0].title(),
+                           sector=person['Investment interest/sector'].iloc[0].title(),
+                           stage=person['Stage (Pre-Seed, Seed, Series A/B/C)'].iloc[0].title())
 
 # coding: utf-8
 
@@ -173,5 +174,5 @@ def dataRequest():
 
 
 if __name__ == "__main__":
-    app.run(port=9050, debug=True)
+    app.run(port=9053, debug=True)
 
