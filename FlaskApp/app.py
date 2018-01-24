@@ -55,7 +55,7 @@ rawvcData.columns
 # In[92]:
 
 filteredVCdata = rawvcData.loc[:, ["Full Name", "Primary Job Title", "Primary Company", "Location",
-                                   "Investment interest/sector", "Actively investing?"]]
+                                   "Investment interest/sector", "Stage (Pre-Seed, Seed, Series A/B/C)"]]
 
 # In[93]:
 
@@ -83,6 +83,12 @@ filteredVCdata.fillna('Null', inplace=True)
 
 
 # In[96]:
+
+#Returns if indicated investor contains the investment stage searched
+def stageFilter(stageName):
+    
+    stageNameLowered = stageName.lower()
+    return filteredVCdata[filteredVCdata["Stage (Pre-Seed, Seed, Series A/B/C)"].str.contains(stageNameLowered) == True]
 
 # All results for the corresponding industry sector
 def sectorFilter(sectorName):
