@@ -18,6 +18,7 @@
             for(var key in responseData) {
                 cleanedData[i][key] = responseData[key][i].replace(/\b\w/g, l => l.toUpperCase());
             }
+            cleanedData[i]['First'] = cleanedData[i]['Full Name'].split(/\s(.+)/)[0];
         }
         console.log(cleanedData);
         return cleanedData;

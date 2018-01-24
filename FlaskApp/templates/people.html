@@ -43,10 +43,14 @@
 						<table class="table table-advance table-striped table-bordered" style="margin-top: 10px;">
 							{% raw %}
 							<tr>
-								<td ng-repeat="(key, value) in data[0]"> {{ key }} </td>
+								<td ng-if="key !='First'" ng-repeat="(key, value) in data[0]"> {{ key }} </td>
 							</tr>
-							<tr ng-repeat="person in data | filter:search(searchLocation, searchIndustry, searchJob, searchStage)">
-								<th ng-repeat="(key, value) in person"> {{ value }} </th>
+							<tr ng-repeat="person in data | filter:search(searchLocation, searchIndustry, searchJob)">
+								<th href="/profile/{{person['First']}}" ng-repeat="(key, value) in person" ng-if="key !='First'">
+									<a ng-if="key =='Full Name'" href="/profile/{{person['First']}}"
+										ng-click="changeProfile(person)"> {{ value }} </a>
+									<span ng-if="key !='Full Name'"> {{ value }} </span>
+								</th>
 							</tr>
 							{% endraw %}
 						</table>
