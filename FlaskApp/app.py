@@ -15,9 +15,15 @@ def people():
 def companies():
     return render_template('companies.html')
 
-@app.route("/profile")
-def profile():
-    return render_template('profile.html')
+@app.route("/profile/<name>")
+def profile(name):
+    person = filteredVCdata[filteredVCdata['Full Name'].str.contains(name.lower())]
+    print(person)
+    return render_template('linked_profile.html', name=person['Full Name'][0].title(),
+                           job=person['Primary Job Title'][0].title(),
+                           company=person['Primary Company'][0].title(),
+                           location=person['Location'][0].title(),
+                           sector=person['Investment interest/sector'][0].title())
 
 # coding: utf-8
 
@@ -153,11 +159,13 @@ def roleFilter(jobTitle):
 
     # In[ ]:
 
+person = None
+
 @app.route("/dataRequest", methods=['POST'])
 def dataRequest():
     return json.dumps(filteredVCdata.to_dict('list'))
 
 
 if __name__ == "__main__":
-    app.run(port=7000)
+    app.run(port=9050, debug=True)
 
