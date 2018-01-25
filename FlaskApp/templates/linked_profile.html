@@ -11,14 +11,31 @@
         <title> {{name}} </title>
     </head>
     <body>
-		<!-- Content -->
-        <div>
-            <div> Name: {{name}} </div>
-            <div> Primary Job Title: {{job}} </div>
-            <div> Company: {{company}} </div>
-            <div> Location: {{location}} </div>
-            <div> Sector: {{sector}} </div>
-            <div> Stage: {{stage}} </div>
+        <!-- Content -->
+        <div id="content">
+            <div class="row">
+                <div class="container" style="margin-top: 6em">
+                    <div class="col-lg-4 col-lg-offset-1">
+                        <section id="information">
+                            <div>
+                                <a href="#"><img src="static/assets/will_smith.jpg" width="350" height="350" /></a>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-7">
+                        <h1>Name: {{name}}</h1>
+                        <h3> Primary Job Title: {{job}} </h3>
+                        <h3> Company: {{company}} </h3>
+                        <h3> Location: {{location}} </h3>
+                        <h3> Sector: {{sector}} </h3>
+                        <h3> Stage: {{stage}} </h3>
+                        <br>
+                        <button style="float:left; margin-right: 5px;" type="button" class="btn btn-primary" id="currentInvestments">
+                            Request to Contact Will Smith
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-	</body>
+    </body>
 </html>
