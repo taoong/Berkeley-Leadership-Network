@@ -24,7 +24,9 @@ def profile(name):
                            company=person['Primary Company'].iloc[0].title(),
                            location=person['Location'].iloc[0].title(),
                            sector=person['Investment interest/sector'].iloc[0].title(),
-                           stage=person['Stage (Pre-Seed, Seed, Series A/B/C)'].iloc[0].title())
+                           stage=person['Stage (Pre-Seed, Seed, Series A/B/C)'].iloc[0].title(),
+                           bio=person['Bio'].iloc[0].title(),
+                           picture=person['Row for Picture'].iloc[0].title())
 
 # coding: utf-8
 
@@ -56,7 +58,7 @@ rawvcData.columns
 # In[92]:
 
 filteredVCdata = rawvcData.loc[:, ["Full Name", "Primary Job Title", "Primary Company", "Location",
-                                   "Investment interest/sector", "Stage (Pre-Seed, Seed, Series A/B/C)"]]
+                                   "Investment interest/sector", "Stage (Pre-Seed, Seed, Series A/B/C)", "Bio", "Row for Picture"]]
 
 # In[93]:
 
