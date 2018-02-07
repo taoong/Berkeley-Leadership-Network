@@ -176,5 +176,5 @@ def dataRequest():
 
 
 if __name__ == "__main__":
-    app.run(port=9053, debug=True)
+    app.run(port=9054, debug=True)
 

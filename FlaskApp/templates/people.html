@@ -47,7 +47,7 @@
 							</tr>
 							<tr ng-repeat="person in data | filter:search(searchLocation, searchIndustry, searchJob, searchStage)">
 								<th href="/profile/{{person['First']}}" ng-repeat="(key, value) in person" ng-if="key !='First'">
-									<a ng-if="key =='Full Name'" href="/profile/{{person['First']}}"
+									<a ng-if="key =='Full Name'" href="/profile/{{person['Full Name']}}"
 										ng-click="changeProfile(person)"> {{ value }} </a>
 									<span ng-if="key !='Full Name'"> {{ value }} </span>
 								</th>
