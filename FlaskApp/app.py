@@ -25,7 +25,7 @@ def profile(name):
                            location=person['Location'].iloc[0].title(),
                            sector=person['Investment interest/sector'].iloc[0].title(),
                            stage=person['Stage (Pre-Seed, Seed, Series A/B/C)'].iloc[0].title(),
-                           bio=person['Bio'].iloc[0].title(),
+                           bio=person['Bio'].iloc[0],
                            picture=person['Row for Picture'].iloc[0].title())
 
 # coding: utf-8
@@ -78,7 +78,8 @@ filteredVCdata.head()
 
 for i in range(len(filteredVCdata.columns)):
     for x in filteredVCdata.columns:
-        filteredVCdata[x] = filteredVCdata[x].str.lower()
+        if(x != "Bio"):
+            filteredVCdata[x] = filteredVCdata[x].str.lower()
 
 # In[95]:
 
