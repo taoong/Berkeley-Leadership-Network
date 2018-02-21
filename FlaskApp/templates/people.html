@@ -20,23 +20,21 @@
 			<div id="content" style="margin-left:11em;">
 				<div class="inner">
 					<section class="box search">
-						<form method="post" action="#">
+						<form method="post" id="location-search">
 							<input type="text" ng-model='searchLocation' class="text" name="search" placeholder="Search for a location... (Eg. San Francisco)" />
 						</form>
 						<br>
-						<form method="post" action="#">
+						<form method="post" id="industry-search">
 							<input type="text" ng-model='searchIndustry' class="text" name="search" placeholder="Search for an industry... (Eg. Internet)" />
 						</form>
 						<br>
-						<form method="post" action="#">
+						<form method="post" id="job-search">
 							<input type="text" ng-model='searchJob' class="text" name="search" placeholder="Search for a job title... (Eg. Investor)" />
 						</form>
 						<br>
-						<form method="post" action="#">
+						<form method="post" id="stage-search">
 							<input type="text" ng-model='searchStage' class="text" name="search" placeholder="Search for an investment stage... (Eg. Series A)" />
 						</form>
-
-
 					</section>
 					<!-- Post -->
 					<article class="box post post-excerpt" id="info" ng-if="data.length > 0">
