@@ -26,16 +26,16 @@
 
     $scope.search = function(searchLocation, searchIndustry, searchJob, searchStage) {
         return function (item) {
-            if (searchLocation && !(item['Location'].includes(searchLocation))) {
+            if (searchLocation && !(item['Location'].toLowerCase().includes(searchLocation.toLowerCase()))) {
                 return false;
             }
-            if (searchIndustry && !(item['Investment interest/sector'].includes(searchIndustry))) {
+            if (searchIndustry && !(item['Investment interest/sector'].toLowerCase().includes(searchIndustry.toLowerCase()))) {
                 return false;
             }
-            if (searchJob && !(item['Primary Job Title'].includes(searchJob))) {
+            if (searchJob && !(item['Primary Job Title'].toLowerCase().includes(searchJob.toLowerCase()))) {
                 return false;
             }
-            if (searchStage && !(item['Stage (Pre-Seed, Seed, Series A/B/C)'].includes(searchStage))) {
+            if (searchStage && !(item['Stage (Pre-Seed, Seed, Series A/B/C)'].toLowerCase().includes(searchStage.toLowerCase()))) {
                 return false;
             }
 
