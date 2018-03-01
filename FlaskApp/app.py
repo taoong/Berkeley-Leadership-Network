@@ -19,7 +19,7 @@ def profile(name):
                            sector=person['Investment interest/sector'].iloc[0].title(),
                            stage=person['Stage (Pre-Seed, Seed, Series A/B/C)'].iloc[0].title(),
                            bio=person['Bio'].iloc[0],
-                           picture=person['Row for Picture'].iloc[0].title())
+                           picture=person['Row for Picture'].iloc[0])
 
 # coding: utf-8
 
@@ -36,7 +36,7 @@ from IPython.display import display, Latex, Markdown, HTML, Javascript
 
 # In[90]:
 
-rawvcData = pd.read_csv('blnData.csv')
+rawvcData = pd.read_csv('blnData.csv', dtype=str)
 rawvcData.head()
 
 # In[ ]:
@@ -69,10 +69,12 @@ filteredVCdata.head()
 
 # In[94]:
 
-for i in range(len(filteredVCdata.columns)):
-    for x in filteredVCdata.columns:
-        if(x != "Bio"):
-            filteredVCdata[x] = filteredVCdata[x].str.lower()
+for x in filteredVCdata.columns:
+    if(x != "Bio"):
+        filteredVCdata[x] = filteredVCdata[x].str.lower()
+    if(x == "Row for Picture"):
+        filteredVCdata[x] = filteredVCdata[x].str.replace('/','')
+        filteredVCdata[x] = "/static/images/Pictures_Angels/" + filteredVCdata[x].astype(str)
 
 # In[95]:
 
