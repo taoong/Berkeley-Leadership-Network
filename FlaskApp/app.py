@@ -5,15 +5,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
-    return render_template('index.html')
-
-@app.route("/people")
-def people():
     return render_template('people.html')
 
-@app.route("/companies")
-def companies():
-    return render_template('companies.html')
 
 @app.route("/profile/<name>")
 def profile(name):
@@ -177,5 +170,5 @@ def dataRequest():
 
 
 if __name__ == "__main__":
-    app.run(port=9057)
+    app.run(port=9077)
 
