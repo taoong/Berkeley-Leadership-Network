@@ -31,29 +31,58 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
 from IPython.display import display, Latex, Markdown, HTML, Javascript
 
 # In[90]:
+rawAngelData = pd.read_csv('AngelData.csv', dtype=str)
+rawPartnerData = pd.read_csv('PartnerData.csv', dtype=str)
+rawFounderData = pd.read_csv('FounderData.csv', dtype=str)
+#rawAssociateData = pd.read_excel(blnDataPath, 'Associates', dtype=str)
+#rawvcData = pd.read_csv('blnData.csv', dtype=str)
+#rawvcData.head()
 
-rawvcData = pd.read_csv('blnData.csv', dtype=str)
-rawvcData.head()
+rawAngelData.head()
+rawPartnerData.head()
+rawFounderData.head()
 
 # In[ ]:
 
-
-
-
-# In[91]:
-
-rawvcData.columns
-
-# In[92]:
-
-filteredVCdata = rawvcData.loc[:, ["Full Name", "Primary Job Title", "Primary Company", "Location",
+#Create Filtered Angel Data
+filteredAngelData = rawAngelData.loc[:, ["Full Name", "Primary Job Title", "Primary Company", "Location",
                                    "Investment interest/sector", "Stage (Pre-Seed, Seed, Series A/B/C)", "Bio", "Row for Picture"]]
+filteredAngelData["Row for Picture"] = "TypeA" + filteredAngelData["Row for Picture"] 
+filteredAngelData.head()
 
-# In[93]:
+#Create Filtered Partner Data
+filteredPartnerData = rawPartnerData.loc[:, ["Full Name", "Primary Job Title", "Primary Company", "Location",
+                                   "Investment interest/sector", "Stage (Pre-Seed, Seed, Series A/B/C)", "Bio", "Row for Picture"]]
+filteredPartnerData["Row for Picture"] = "TypeP" + filteredPartnerData["Row for Picture"] 
+filteredPartnerData.head()
+
+
+#Create Filtered Founder Data
+filteredFounderData = rawFounderData.loc[:, ["Full Name", "Primary Job Title", "Primary Company", "Location",
+                                   "Investment interest/sector", "Stage (Pre-Seed, Seed, Series A/B/C)", "Bio", "Row for Picture"]]
+filteredFounderData["Row for Picture"] = "TypeF" + filteredFounderData["Row for Picture"] 
+filteredFounderData.head()
+
+
+
+
+frames = [filteredAngelData, filteredPartnerData, filteredFounderData]
+filteredVCdata = pd.concat(frames) 
+
+
+# # In[91]:
+
+# rawvcData.columns
+
+# # In[92]:
+
+# filteredVCdata = rawvcData.loc[:, ["Full Name", "Primary Job Title", "Primary Company", "Location",
+#                                    "Investment interest/sector", "Stage (Pre-Seed, Seed, Series A/B/C)", "Bio", "Row for Picture"]]
+
+# # In[93]:
 
 filteredVCdata.head()
 
@@ -70,12 +99,16 @@ filteredVCdata.head()
 # In[94]:
 
 for x in filteredVCdata.columns:
-    if(x != "Bio"):
+    if(x != "Bio" and x != "Row for Picture"):
         filteredVCdata[x] = filteredVCdata[x].str.lower()
     if(x == "Row for Picture"):
         filteredVCdata[x] = filteredVCdata[x].str.replace('/','')
-        filteredVCdata[x] = "/static/images/Pictures_Angels/" + filteredVCdata[x].astype(str)
+        filteredVCdata[x] = filteredVCdata[x].str.replace('@','')
+        filteredVCdata[x] = filteredVCdata[x].str.replace("TypeA","/static/images/Pictures_Angels/")
+        filteredVCdata[x] = filteredVCdata[x].str.replace("TypeP","/static/images/Pictures_Partners/")
+        filteredVCdata[x] = filteredVCdata[x].str.replace("TypeF","/static/images/Pictures_Founders/")
 
+        
 # In[95]:
 
 filteredVCdata.fillna('Null', inplace=True)
